@@ -99,11 +99,34 @@ Usefull builtin is `shift` which shift and consume parameter list to the left so
 
 ## File pattern matching
 
+| Pattern  | Description |
+| ------------- | ------------- |
+| `*` | Match everything including null string |
+| `*/` | Match folders |
+| `**/` | Match folders and subfolders |
+| `?` | Match any signle character |
+| `?` | Match any signle character |
+| `[range]` | Match range of character i.e `[abcd]` or `[a-dx-z]` or `[alpha]` etc..|
+| `*(pattern-list)` | Match zero or more pattern on list |
+| `+(pattern-list)` | Match one or more pattern on list |
+| `@(pattern-list)` | Match one pattern on list |
+| `!(pattern-list)` | Match anything except pattern list |
+
 ## Process Substitution
 
 ## Shell Parameter Expansion
 
 ## Tilde Expansion
+
+| Tilde  | Description |
+| ------------- | ------------- |
+| `~` | Go to home folder  |
+| `~/folder` | Go to home folder/folder  |
+| `~fred/folder` | Go to home folder user fred and its subdirectory folder  |
+| `~+/foo` | `$PWD/foo` Yeha!  |
+| `~-/foo` | `$OLDPWD/foo`  Nice! |
+| `~N` or `~+N` | Go to N folder back in history (dirs) |
+| `~-N` |  Go to N folder forward in history (dirs) |
 
 ## Brace Expansion
 
@@ -113,9 +136,28 @@ Usefull builtin is `shift` which shift and consume parameter list to the left so
 
 ## Environment during execution
 
-## Bourne Shell Variables
+## Bourne and Bash Shell Variables
 
-## Bash Variables
+Here is only small subset of full list.
+
+| Tilde  | Description |
+| ------------- | ------------- |
+| BASH_SUBSHELL | Incremented by one each time a new subshell is started.|
+| BASH_SOURCE and BASH_LINENO |  The shell function `${FUNCNAME[$i]}` is defined in the file `${BASH_SOURCE[$i]}` and called from `${BASH_SOURCE[$i+1]` |
+| DIRSTACK | Array of dirs in history (similar to `dirs`)|
+| FUNCNAME | Array of called function in script (similar to `caller`)|
+| GROUPS | Current user array of group membership |
+| HIST* | Whole group of variables defining bash history usage |
+| LINENO | The line number in the script or shell function currently executing. |
+| OLDPWD | Before current working directory |
+| PIPESTATUS | Array of return status from last pipe expression |
+| PPID  | Parent process id |
+| PWD | Return current working directory |
+| RANDOM | Return random number from 0 to 32767 |
+| SECONDS | Seconds from start of shell |
+| SHELLOPTS | Current shell options |
+| SHLVL | Incremented by one each time a new instance of Bash is started (but no subshell).|
+| UID  | User id number |
 
 ## Bash Conditional Expressions
 
