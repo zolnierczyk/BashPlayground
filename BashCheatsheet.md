@@ -15,7 +15,7 @@ Full list here: [Link to doc](https://www.gnu.org/software/bash/manual/html_node
 | -x | For debug print command after varible resolution |
 
 Nice to known:
->The current set of options may be found in $-. 
+>The current set of options may be found in $-.
 
 This part of documentation is example how to write non intuitive interface ...
 > Using ‘+’ rather than ‘-’ causes these options to be turned off.
@@ -32,11 +32,47 @@ fi
 
 ```
 
+Example:
+
+``` bash
+if [[ ${VAR} == "yes" ]] ; then
+    printf "Pfff ok.\n"
+    exit 2
+else
+    do_other_stuff
+fi
+```
+
+Be aware that there is difference between calling test by `[]` and `[[ ]]`. Second one is better version of first but is only bash feature.
+
 ``` bash
 case word in
     [ [(] pattern [| pattern]…) command-list ;;]…
 esac
 ```
+
+Example:
+
+``` bash
+case "$1" in
+    "${remove_old_opt}"|"${remove_old_opt_short}")
+        remove_old="yes"
+        printf "Old files from copy int will be removed\n"
+        ;;
+    *)  
+        printf "Command unrecognized\n"
+        exit 1
+        ;;
+esac
+```
+
+Nice to known:
+
+* case argument and matches undergose normal expansion
+* `*)` will behave like default, will match anything so must be at the very end
+* `;&` will do not stop at last command from current case and _start invoking_ next case
+* `;;&` will do not stop at last command and will _continue testing_ for next case
+
 
 ``` bash
 select name [in words …]; do commands; done
@@ -85,7 +121,7 @@ Be advice to use `local` keyword to declare local variables with shodowing effec
 
 | Special  | Description |
 | ------------- | ------------- |
-| `$1 $2 ` etc.. | Access positional paramter index by number  |
+| `$1 $2` etc.. | Access positional paramter index by number  |
 | `$#` | Number of positional parameters |
 | `$*` | Access all parameter combined into one string |
 | `$@` | Access all parameter combined into list of string |

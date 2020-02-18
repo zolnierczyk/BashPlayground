@@ -21,3 +21,7 @@ w wget whoami whois kill killall & nohup
 ## grep family
 
 ## rsync magic
+
+## Filesize and other stuff
+
+`df -h` `du -hc` `tree -hpD`
